@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Institutional Access</title>
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+<!-- Contêiner do título -->
+<h2 class="text-center">Consulta de Credenciais</h2>
+<h3 class="text-center">Terceirão 😜</h3>
+<div class="card p-4">
+<label for="nome">Nome Completo:</label>
+<input type="text" id="nome" class="form-control mb-3" placeholder="Digite seu
+nome completo">
+<button onclick="buscarDados()" class="btn btn-primary w-100">Consultar</button>
+</div>
+<div id="resultado" class="mt-4 text-center"></div>
+</div>
+<script>
+const alunos = {
+"ANA CLARA MESSIAS SILVA": { matricula: "2808603", email:
+"maria.paulino56@aluno.ce.gov.br" },
+"ANA RITA SEVERO BARROS": { matricula: "2337466", email:
+"ana.barros167@aluno.ce.gov.br" },
+"ANGELINA AMANDA ALVES DO REGO": { matricula: "2805170", email:
+"angelina.rego@aluno.ce.gov.br" },
+"ANDRE LUIZ NOGIMO FIDELIS": { matricula: "4373402", email:
+"anna.fidelis@aluno.ce.gov.br" },
+"ANTONIO LAIRTON DA CUNHA LIMA": { matricula: "2194195", email:
+"antonio.lima1386@aluno.ce.gov.br" },
+"ANTONIO TUSMAR SILVA BENICIO": { matricula: "4668162", email:
+"antonio.benicio11@aluno.ce.gov.br" },
+"BRUNO TEIXEIRA SILVA ABREU": { matricula: "2802292", email:
+"bruno.abreu8@aluno.ce.gov.br" },
+"DAVID LUCAS DE SOUSA FELIX": { matricula: "2106250", email:
+"david.felix6@aluno.ce.gov.br" },
+"DERECK WEYNAN FERNANDES SOARES": { matricula: "3899170", email:
+"dereck.soares@aluno.ce.gov.br" },
+"DOUGLAS LEMOS ROQUE": { matricula: "1895706", email:
+"douglas.roque@aluno.ce.gov.br" },
+"ERIALDO DE FREITAS PEREIRA": { matricula: "2835175", email:
+"erialdo.pereira@aluno.ce.gov.br" },
+"FELIPE RAFAEL OLIVEIRA GOMES": { matricula: "1922470", email:
+"felipe.gomes47@aluno.ce.gov.br" },
+"FRANCISCO DAYVID ALVES DA SILVA": { matricula: "3185419", email:
+"francisco.silva8176@aluno.ce.gov.br" },
+"FRANCISCO YURICK FERREIRA NUNES": { matricula: "2145121", email:
+"francisco.nunes129@aluno.ce.gov.br" },
+"GABRIEL DA SILVA PAIVA": { matricula: "5076862", email:
+"gabriel.paiva23@aluno.ce.gov.br" },
+"GABRIEL LIMA CAVALCANTE": { matricula: "1810816", email:
+"gabriel.cavalcante59@aluno.ce.gov.br" },
+"GABRIEL SOUSA DE LIMA": { matricula: "2111274", email:
+"gabriel.lima321@aluno.ce.gov.br" },
+"GABRIELLY FERNANDES FERREIRA": { matricula: "3149745", email:
+"gabrielly.ferreira6@aluno.ce.gov.br" },
+"GEOVANA KERCIA DA SILVA GERONIMO": { matricula: "2215027", email:
+"geovana.geronimo@aluno.ce.gov.br" },
+"GUSTAVO HENRIQUE INACIO NASCIMENTO": { matricula: "1840208", email:
+"gustavo.nascimento105@aluno.ce.gov.br" },
+"HAVYLA COSTA DE SOUSA": { matricula: "2106875", email:
+"havyla.sousa1@aluno.ce.gov.br" },
+"ISADORA MARA DOS SANTOS DA PAZ": { matricula: "2219432", email:
+"isadora.paz@aluno.ce.gov.br" },
+"JOAO PEDRO CRUZ RIBEIRO": { matricula: "3143752", email:
+"joao.ribeiro142@aluno.ce.gov.br" },
+"JOSE VICTOR PEREIRA DE LIMA": { matricula: "1895933", email:
+"jose.lima964@aluno.ce.gov.br" },
+"KAUAN EMANUEL DA SILVA": { matricula: "2170184", email:
+"kauan.silva259@aluno.ce.gov.br" },
+"KAUE BERGSON ALVES": { matricula: "1896014", email:
+"kaue.sousa31@aluno.ce.gov.br" },
+"KAUE LUCAS OLIVEIRA ALVES": { matricula: "3142156", email:
+"kaue.alves11@aluno.ce.gov.br" },
+"LAVYNIA VYVIAN DA SILVA DO VALE": { matricula: "2812079", email:
+"lavynia.vale@aluno.ce.gov.br" },
+"LUANA VITORIA SILVA MORAIS": { matricula: "3050539", email:
+"luana.morais6@aluno.ce.gov.br" },
+"LUCAS EMANUEL FERREIRA SOARES": { matricula: "2194201", email:
+"lucas.soares46@aluno.ce.gov.br" },
+"LUIS FELIPE DE OLIVEIRA DOS SANTOS": { matricula: "2107175", email:
+"luis.santos211@aluno.ce.gov.br" },
+"MARCOS VINICIUS SOARES FIGUEIREDO": { matricula: "2231490", email:
+"marcos.figueredo@aluno.ce.gov.br" },
+"MARIA EDUARDA BELARMINO PEREIRA": { matricula: "1755674", email:
+"maria.pereira1426@aluno.ce.gov.br" },
+"PAULO HENRIQUE ALMEIDA MARTINS": { matricula: "723827", email:
+"paulo.martins47@aluno.ce.gov.br" },
+"RICARDO PINTO PORTO NETO": { matricula: "3143066", email:
+"ricardo.neto3@aluno.ce.gov.br" },
+"RONNY VICTOR DE SOUSA BATISTA": { matricula: "2216826", email:
+"ronny.batista@aluno.ce.gov.br" },
+"SAMUEL DA SILVA PAIVA": { matricula: "5076780", email:
+"samuel.paiva15@aluno.ce.gov.br" },
+"SUERLANIA PRUDENCIO TEODOSIO": { matricula: "2211016", email:
+"suerlania.teodosio@aluno.ce.gov.br" },
+"VALDEMAR CARLOS DO NASCIMENTO NETO": { matricula: "3143071", email:
+"valdemar.neto10@aluno.ce.gov.br" },
+"VANESSA ELLEN DA SILVA RIBEIRO": { matricula: "1569820", email:
+"vanessa.ribeiro11@aluno.ce.gov.br" },
+"VICTOR GABRIEL FERNANDES PEREIRA": { matricula: "4167180", email:
+"victor.pereira55@aluno.ce.gov.br" }
+};
+function buscarDados() {
+let nome = document.getElementById("nome").value.trim().toUpperCase();
+let resultadoDiv = document.getElementById("resultado");
+if (alunos[nome]) {
+resultadoDiv.innerHTML = `
+<div class="alert alert-success">
+<p><b>Matrícula:</b> ${alunos[nome].matricula}</p>
+<p><b>E-mail institucional:</b> ${alunos[nome].email}</p>
+<p><b>Senha:</b> Bezerra2023</p>
+</div>`;
+} else {
+resultadoDiv.innerHTML = `<div class="alert alert-danger">Nome não
+encontrado!</div>`;
+}
+}
+</script>
+</body>
+</html>
